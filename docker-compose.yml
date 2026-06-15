@@ -31,7 +31,7 @@ services:
       - ./backend:/app
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-portfolio_user}:${POSTGRES_PASSWORD:-portfolio_pass}@db:5432/${POSTGRES_DB:-portfolio_db}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://${POSTGRES_USER:-portfolio_user}:${POSTGRES_PASSWORD:-portfolio_pass}@db:5432/${POSTGRES_DB:-portfolio_db}}
       SECRET_KEY: ${SECRET_KEY:-change-me-in-production-use-a-strong-random-secret}
       JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
       JWT_EXPIRATION_MINUTES: ${JWT_EXPIRATION_MINUTES:-60}

@@ -28,6 +28,9 @@ COPY alembic.ini .
 COPY alembic/ alembic/
 COPY app/ app/
 
+# Create uploads directory and give appuser permission
+RUN mkdir -p uploads && chown appuser:appgroup uploads
+
 USER appuser
 
 EXPOSE 8000
