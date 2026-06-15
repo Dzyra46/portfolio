@@ -1,0 +1,30 @@
+# Environment Variables
+.env
+.env.local
+.env.production
+.env.*
+
+# Secrets
+*.pem
+*.key
+certs/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.cursor/
+.cursorrules
+
+# Python (in case they run scripts at root)
+__pycache__/
+.venv/
+venv/
+
+# Node (in case they run scripts at root)
+node_modules/
+
+# Agent/AI directories
+.agents/
+.gemini/
