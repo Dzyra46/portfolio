@@ -14,7 +14,7 @@ COPY package.json ./
 # We'll install bun globally first.
 RUN npm install -g bun
 COPY bun.lock* ./
-RUN if [ -f bun.lock ] || [ -f bun.lockb ]; then bun install --frozen-lockfile; else npm install --legacy-peer-deps; fi
+RUN npm install --legacy-peer-deps
 
 # Rebuild the source code only when needed
 FROM base AS builder
