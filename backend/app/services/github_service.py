@@ -37,10 +37,14 @@ class GithubService:
         try:
             with httpx.Client(headers=self.headers, timeout=10.0) as client:
                 while True:
-                    response = client.get(
-                        f"{self.base_url}/users/{username}/repos",
-                        params={"per_page": per_page, "page": page, "type": "owner", "sort": "updated"}
-                    )
+                    if settings.GITHUB_TOKEN:
+                        url = f"{self.base_url}/user/repos"
+                        params = {"per_page": per_page, "page": page, "affiliation": "owner,collaborator", "sort": "updated"}
+                    else:
+                        url = f"{self.base_url}/users/{username}/repos"
+                        params = {"per_page": per_page, "page": page, "type": "owner", "sort": "updated"}
+
+                    response = client.get(url, params=params)
                     response.raise_for_status()
                     
                     data = response.json()
@@ -102,6 +106,7 @@ class GithubService:
                 db_repo.topics = repo.get("topics", [])
                 db_repo.last_pushed_at = pushed_at
                 db_repo.synced_at = now
+                db_repo.is_active = True
 
         # Handle deleted/archived repositories (Soft Deletes)
         all_metadata = self.session.execute(select(ProjectGithubMetadata)).scalars().all()
