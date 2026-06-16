@@ -15,6 +15,7 @@ from app.schemas.health import HealthDBResponse, HealthResponse
 router = APIRouter()
 
 
+@router.get("/", response_model=HealthResponse)
 @router.get("/health", response_model=HealthResponse)
 def health_check() -> dict:
     """Basic application health check."""
