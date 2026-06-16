@@ -62,5 +62,5 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.REPO_LC }}-frontend:latest
           build-args: |
-            INTERNAL_API_URL=https://portfolioabil-bsanhuhcgzeUaydw.southeastasia-01.azurewebsites.net
-            NEXT_PUBLIC_API_URL=https://portfolioabil-bsanhuhcgzeUaydw.southeastasia-01.azurewebsites.net/api/v1
+            INTERNAL_API_URL=https://portfolioabil-bsanhuhcgze0aydw.southeastasia-01.azurewebsites.net
+            NEXT_PUBLIC_API_URL=https://portfolioabil-bsanhuhcgze0aydw.southeastasia-01.azurewebsites.net/api/v1
