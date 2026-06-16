@@ -1,6 +1,5 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypePrettyCode from "rehype-pretty-code";
 
 export function MarkdownRenderer({ content }: { content: string }) {
   return (
@@ -17,15 +16,6 @@ export function MarkdownRenderer({ content }: { content: string }) {
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[
-          [
-            rehypePrettyCode,
-            {
-              theme: "aurora-x", // Gives a nice dark, cyan/purple-ish vibe
-              keepBackground: false,
-            },
-          ],
-        ]}
       >
         {content}
       </ReactMarkdown>
